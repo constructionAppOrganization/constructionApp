@@ -56,16 +56,16 @@ function EditClient(props) {
   }
 
   return (
-    <div className="container">
+    <div className="container" style={{backgroundColor: '#fed8b1', padding: "20px"}}>
       <br />
       <Link to="/adminPannel/ClientManager">
         <Button variant="primary">Back</Button>
       </Link>
       <br />
       <center>
-        <h2 style={{ color: "#f0ad4e" }}>Edit Client</h2>
+      <u style={{color: "#f0ad4e"}}><h2 style={{color: "#f0ad4e"}}>Edit Client</h2></u>
       </center>
-      <Form onSubmit={editdata}>
+      <Form onSubmit={editdata} style={{backgroundColor: "#ececec", padding: "20px"}}>
         <Form.Group controlId="formBasicName">
           <Form.Label>
             Individual's Full Name/ Organization's Name (Required Format: Must
@@ -148,6 +148,7 @@ function EditClient(props) {
               }}
             />
           </Form.Group>
+          <br/>
         </div>
         <Button variant="warning" type="submit">
           Submit
