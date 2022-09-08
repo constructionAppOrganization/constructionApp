@@ -28,7 +28,7 @@ function DisplayClients(props) {
       .doc(ID)
       .delete()
       .then(() => {
-        alert(ID, "Document successfully deleted!");
+        alert("Client successfully deleted!");
       })
       .catch((err) => {
         console.error("Error removing document: ", err);
@@ -41,7 +41,9 @@ function DisplayClients(props) {
   }
 
   return (
-    <div style={{ paddingRight: "20px", paddingLeft: "20px" }}>
+    <div style={{ paddingRight: "20px", paddingLeft: "20px", paddingTop: "20px", paddingBottom: "20px", backgroundColor: '#fed8b1' }}>
+      <br />
+      <center><u style={{color: "#f0ad4e"}}><h2 style={{color: "#f0ad4e"}}>Client Details Report</h2></u></center>
       <br />
       <center>
         <Form.Group controlId="formBasicSearchBar">
@@ -59,7 +61,7 @@ function DisplayClients(props) {
           Add New Client
         </Button>
       </Link>
-      <Table bordered size="sm">
+      <Table bordered size="sm" style={{backgroundColor: "white"}} id="dtBasicExample">
         <thead>
           <tr>
             <th style={{ display: "none" }}>Document ID</th>
