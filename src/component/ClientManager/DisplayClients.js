@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Table, Button, ButtonGroup, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./clientmanager.css";
+import TablePagination from "@material-ui/core/TablePagination";
 
 function DisplayClients(props) {
   const [clients, setClients] = useState([]);
@@ -11,6 +12,18 @@ function DisplayClients(props) {
   const [editingClient, setEditingClient] = useState(props);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    console.log(event.target.value);
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   useEffect(() => {
     db.collection("clients").onSnapshot((snapshot) => {
@@ -84,7 +97,7 @@ function DisplayClients(props) {
           </tr>
         </thead>
         <tbody>
-          {clients
+          {clients.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .filter((client) => {
               if (searchTerm == "") {
                 return client;
@@ -148,6 +161,15 @@ function DisplayClients(props) {
             ))}
         </tbody>
       </Table>
+      <TablePagination
+          rowsPerPageOptions={[10, 20, 30, 40]}
+          component="div"
+          count={clients.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
     </div>
   );
 }
