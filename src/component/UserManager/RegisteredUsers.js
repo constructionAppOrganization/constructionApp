@@ -1,5 +1,6 @@
 import React from "react";
 import driverStyles from "../../assets/css/home/DriverDetails.module.css";
+import TablePagination from "@material-ui/core/TablePagination";
 
 
 
@@ -20,6 +21,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -31,6 +33,30 @@ function RegisteredUsers() {
   const [checkNic, setcheckNic] = useState(false);
  
   const [searchText, setsearchText] = useState("");
+
+  const [page, setPage] = React.useState(0);
+
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+
+
+  const handleChangePage = (event, newPage) => {
+
+    setPage(newPage);
+
+  };
+
+
+
+  const handleChangeRowsPerPage = (event) => {
+
+    console.log(event.target.value);
+
+    setRowsPerPage(+event.target.value);
+
+    setPage(0);
+
+  };
 
   const deleteUser = (user) => {
     if (
@@ -92,7 +118,7 @@ function RegisteredUsers() {
      
       <Container>
       <div className={driverStyles.viewdriverDiv}>
-        <center><h3 className={driverStyles.header}>Users Details</h3></center>
+        <center><h3 className={driverStyles.header}>Managers' Details</h3></center>
         <br />
         <br />
         <Row>
@@ -181,6 +207,7 @@ function RegisteredUsers() {
                 
               }
             })
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((user) => (
               <tr className={driverStyles.tbldata}>
                 <td className={driverStyles.tbldata}>{user.username}</td>
@@ -213,6 +240,23 @@ function RegisteredUsers() {
               </tr>
             ))}
         </table>
+        <TablePagination
+
+          rowsPerPageOptions={[1, 2, 4, 10]}
+
+          component="div"
+
+          count={users.length}
+
+          rowsPerPage={rowsPerPage}
+
+          page={page}
+
+          onPageChange={handleChangePage}
+
+          onRowsPerPageChange={handleChangeRowsPerPage}
+
+        />
       </div>
       </Container>
      

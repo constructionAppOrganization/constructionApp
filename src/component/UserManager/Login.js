@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory, useLocation,Link } from "react-router-dom";
 
 
 import {
@@ -40,6 +40,9 @@ function Login({ user, setuser }) {
             setmessage("Incorrect password!");
             setAlertDanger(true);
           } else {
+            history.push({
+              pathname: "/home",
+            });
            
             setAlertDanger(false);
           }
@@ -53,7 +56,7 @@ function Login({ user, setuser }) {
 
   const dashboard = () => {
     history.push({
-      path: "/adminPannel",
+      pathname: "/home",
     });
   };
 
@@ -133,15 +136,17 @@ function Login({ user, setuser }) {
   </a>*/}
               <br />
               <br />
-              <Button className="btn btn-info" style={{ width: "100%" }} >
+              {/* <Link to ="/home"> */}
+              <Button type="submit" class="btn btn-info"  style={{ width: "100%" }} >
                 
                 Log In
               </Button>
+              {/* </Link> */}
               <br />
               <br />
               <label>
                 Don't have an account?{" "}
-                <a href="/adminPannel/UserManager/SignUp">
+                <a href="/">
                   <strong>Create an account</strong>
                 </a>
               </label>
