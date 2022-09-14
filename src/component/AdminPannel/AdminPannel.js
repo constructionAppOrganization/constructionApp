@@ -129,7 +129,6 @@ export default function AdminPannel1() {
           </Link>
           <br />
         </div>
-        <div>ss</div>
       </Container>
 
       {/* <Image src={adminBg} fluid /> */}
