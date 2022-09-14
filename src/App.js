@@ -5,6 +5,7 @@ import React from "react";
 import AdminPannel from "./component/AdminPannel/AdminPannel";
 import Header from "./component/Header/Header";
 import Emp from "./component/Emp";
+import EmployeeManager from "./component/EmployeeManager/EmployeeManager";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -18,6 +19,13 @@ function App() {
         <Switch>
           <Route path="/adminPannel" exact component={AdminPannel}>
             <AdminPannel />
+          </Route>
+
+          <Route
+            path="/adminPannel/EmployeeManager"
+            component={EmployeeManager}
+          >
+            <EmployeeManager />
           </Route>
         </Switch>
       </Router>

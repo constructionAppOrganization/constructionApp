@@ -13,8 +13,6 @@ import EmployeeMainNavigation from "./EmployeeMainNavigation";
 import { useState, useEffect } from "react";
 import SalaryReport from "./salaryReport";
 import Employee from "./employeeSalary";
-import DisplayMonthlyAttendance from "../AttendanceManager/DisplayMonthlyAttendance";
-import EditAttendance from "../AttendanceManager/editAttendance";
 import EmployeeReport from "./EmployeeReport";
 import BarChart from "./BarChart";
 import PieChart from "./PieChart.js";
@@ -132,25 +130,6 @@ export default function EmployeeManager() {
                   <EmployeeProfile
                     name={viewEmployee}
                     editEmployeeHandler={editEmployeeHandler}
-                  />
-                </Route>
-
-                <Route
-                  path="/adminPannel/EmployeeManager/MonthlyReport"
-                  component={DisplayMonthlyAttendance}
-                >
-                  <DisplayMonthlyAttendance
-                    employeeID={editEmployee}
-                    editAttendaceHandler={editAttendaceHandler}
-                  />
-                </Route>
-                <Route
-                  path="/adminPannel/EmployeeManager/EditAttendance"
-                  component={EditAttendance}
-                >
-                  <EditAttendance
-                    employeeID={editingAttendanceEmpID}
-                    editingAttendanceDate={editingAttendanceDate}
                   />
                 </Route>
 

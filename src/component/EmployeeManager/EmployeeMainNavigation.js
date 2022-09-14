@@ -1,20 +1,13 @@
 import React from "react";
-import "../SupplierManager/Styles/SupplierMainNavigation.css";
+import "./css/MainNavigation.css";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 export default function EmployeeMainNavigation() {
   return (
-    <div styles={{}}>
-      <Link
-        to="/adminPannel/EmployeeManager/EmpHome"
-        className="SupplierMainNavLinks"
-      >
-        <Button
-          variant="outline-warning"
-          size="sm"
-          className="SupplierMainNavBtn"
-        >
+    <div styles={{ width: "100%" }}>
+      <Link to="/adminPannel/EmployeeManager/EmpHome" className="MainNavLinks">
+        <Button variant="outline-warning" size="sm" className="MainNavBtn">
           Employee Dashboard
         </Button>
       </Link>

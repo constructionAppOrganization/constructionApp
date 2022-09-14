@@ -1,0 +1,9 @@
+.MainNavLinks {
+  text-decoration-line: none;
+}
+
+.MainNavBtn {
+  width: 100%;
+  color: rgb(73, 71, 71);
+  font-weight: 500;
+}
