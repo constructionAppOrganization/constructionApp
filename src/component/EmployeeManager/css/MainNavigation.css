@@ -4,6 +4,8 @@
 
 .MainNavBtn {
   width: 100%;
-  color: rgb(73, 71, 71);
-  font-weight: 500;
+}
+
+.EmpMainBody {
+  height: 90%;
 }

@@ -276,7 +276,7 @@ function DisplayEmployee(props) {
                           backgroundColor: "#ffffff",
                           marginRight: "4px",
                         }}
-                        //variant="info"
+                        variant="info"
                         onClick={() => {
                           ViewEmployee(employee.data.employeeName);
                         }}
@@ -291,7 +291,7 @@ function DisplayEmployee(props) {
                           backgroundColor: "#ffffff",
                           marginRight: "4px",
                         }}
-                        //variant="warning"
+                        variant="warning"
                         onClick={() => {
                           editingEmployee(employee.ID);
                         }}
@@ -306,8 +306,6 @@ function DisplayEmployee(props) {
                       onClick={() => {
                         swal({
                           title: "Delete record?",
-                          // text: "Once deleted, you will not be able to recover this imaginary file!",
-                          // backgroundColor: "#DCDCDC",
                           buttons: true,
                           dangerMode: true,
                         }).then((willDelete) => {
@@ -319,7 +317,7 @@ function DisplayEmployee(props) {
                         });
                       }}
                     >
-                      <DeleteIcon fontSize="small" color="secondary" />
+                      <DeleteIcon fontSize="small" color="action" />
                     </Button>
                   </td>
                 </tr>

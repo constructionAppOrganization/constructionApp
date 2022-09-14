@@ -13,10 +13,6 @@ function BarChart(props) {
   //Database Connections
   const db = firebase.firestore(firebase);
 
-  /* .swal-overlay {
-  background-color: rgba(43, 165, 137, 0.45);
-} */
-
   useEffect(() => {
     async function getData() {
       const designationArray = [];

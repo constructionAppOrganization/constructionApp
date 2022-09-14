@@ -13,7 +13,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/" component={Header} />
+          <Route path="/adminPannel" component={Header} />
         </Switch>
 
         <Switch>

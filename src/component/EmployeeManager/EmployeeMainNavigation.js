@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 
 export default function EmployeeMainNavigation() {
   return (
-    <div styles={{ width: "100%" }}>
+    <div clsssName="" styles={{ width: "100%" }}>
       <Link to="/adminPannel/EmployeeManager/EmpHome" className="MainNavLinks">
         <Button variant="outline-warning" size="sm" className="MainNavBtn">
           Employee Dashboard
@@ -13,41 +13,25 @@ export default function EmployeeMainNavigation() {
       </Link>
 
       <Link to="/adminPannel/EmployeeManager/AddEmployee">
-        <Button
-          variant="outline-warning"
-          size="sm"
-          className="SupplierMainNavBtn"
-        >
+        <Button variant="outline-warning" size="sm" className="MainNavBtn">
           Add Employee
         </Button>
       </Link>
 
       <Link to="/adminPannel/EmployeeManager/DisplayEmployee">
-        <Button
-          variant="outline-warning"
-          size="sm"
-          className="SupplierMainNavBtn"
-        >
+        <Button variant="outline-warning" size="sm" className="MainNavBtn">
           Employee Details
         </Button>
       </Link>
 
       <Link to="/adminPannel/EmployeeManager/ReportHome">
-        <Button
-          variant="outline-warning"
-          size="sm"
-          className="SupplierMainNavBtn"
-        >
+        <Button variant="outline-warning" size="sm" className="MainNavBtn">
           Report Dashboard
         </Button>
       </Link>
 
       <Link to="/adminPannel/EmployeeManager/EmployeeProject">
-        <Button
-          variant="outline-warning"
-          size="sm"
-          className="SupplierMainNavBtn"
-        >
+        <Button variant="outline-warning" size="sm" className="MainNavBtn">
           Assign to a Project
         </Button>
       </Link>
