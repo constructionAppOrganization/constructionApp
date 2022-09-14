@@ -2,43 +2,10 @@ import React, { useEffect, useState } from "react";
 import "../../assets/css/home/bootstrap.min.css";
 import "../../assets/css/home/agency.min.css";
 import { Link, useHistory } from "react-router-dom";
-import { NavDropdown } from "react-bootstrap";
 import "./Header.css";
-import firebase from "firebase";
 import logo from "../../assets/img/avatar.png";
 
 function Header() {
-  const db = firebase.firestore();
-  const [auth, setAuth] = useState(false);
-  const [user, setUser] = useState({ name: "" });
-  let history = useHistory();
-
-  useEffect(() => {
-    const func = async () => {
-      var id = localStorage.getItem("token");
-      if (localStorage.getItem("token") == null) {
-        console.log("not logged in");
-      } else {
-        const cityRef = db.collection("AdminAccounts").doc(id);
-        const doc = await cityRef.get();
-        if (!doc.exists) {
-          console.log("No such document!");
-          setAuth(false);
-          history.push("/");
-        } else {
-          console.log("Document data:", doc.data());
-          setUser({ name: doc.data().userName });
-          setAuth(true);
-        }
-      }
-    };
-    func();
-  }, []);
-  function logout() {
-    localStorage.setItem("token", null);
-    history.push("/");
-  }
-
   return (
     <div>
       <nav
@@ -98,21 +65,10 @@ function Header() {
                   Contact
                 </a>
               </li>
-              <li className={auth ? `nav-item` : `home__hide_adminPannel`}>
+              <li className={`nav-item`}>
                 <Link to="/adminPannel" className="nav-link">
                   Admin Pannel
                 </Link>
-              </li>
-              <li className={auth ? `nav-item` : `home__hide_adminPannel`}>
-                <NavDropdown
-                  id="nav-dropdown-dark-example"
-                  title={user.name}
-                  menuVariant="dark"
-                >
-                  <NavDropdown.Item href="#action/3.1" onClick={logout}>
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
               </li>
             </ul>
           </div>

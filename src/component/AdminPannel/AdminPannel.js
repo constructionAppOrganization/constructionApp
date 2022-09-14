@@ -1,9 +1,7 @@
 import React from "react";
-import "./AdminPannel1.css";
+import "./AdminPannel.css";
 import { Link } from "react-router-dom";
 import { Button, Container, Image, Row } from "react-bootstrap";
-import adminBg from "./admin_Images/adminBg.png";
-import adminIcon from "./admin_Images/adminIcon.jpg";
 import admin from "./admin_Images/admin.png";
 
 export default function AdminPannel1() {
