@@ -12,13 +12,13 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/adminPannel" exact component={AdminPannel}>
-            <AdminPannel />
-          </Route>
+          <Route path="/" component={Header} />
         </Switch>
 
         <Switch>
-          <Route path="/emp" component={Emp} />
+          <Route path="/adminPannel" exact component={AdminPannel}>
+            <AdminPannel />
+          </Route>
         </Switch>
       </Router>
     </div>
