@@ -100,7 +100,7 @@ function EditEmployee(props) {
     <>
       <PageHeader
         title="Edit Employee"
-        //subTitle="Form design with validation"
+        subTitle="Edit employee details"
         icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
       />
       <div>

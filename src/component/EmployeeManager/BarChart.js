@@ -63,7 +63,7 @@ function BarChart(props) {
     <>
       <PageHeader
         title="Report"
-        // subTitle="Contract based report"
+        subTitle="Contract based report"
         icon={<PersonIcon fontSize="large" />}
       />
       <div
@@ -83,7 +83,6 @@ function BarChart(props) {
                 label: "Contract Employees",
                 data: contract,
                 backgroundColor: "rgba(255, 99, 132, 0.4)",
-
                 borderColor: "rgba(255, 99, 132, 1)",
                 borderWidth: 1,
               },

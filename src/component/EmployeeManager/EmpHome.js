@@ -29,15 +29,10 @@ const style = {};
 
 export default function EmpHome() {
   return (
-    <div
-      className="EmpMainBody"
-      style={{
-        minHeight: "650px",
-      }}
-    >
+    <div className="EmpMainBody">
       <PageHeader
         title="Employee Dashboard"
-        //subTitle="Form design with validation"
+        subTitle="Navigate to task"
         icon={<PersonIcon fontSize="large" />}
       />
 
@@ -46,9 +41,6 @@ export default function EmpHome() {
           minHeight: "500px",
           display: "flex",
           flexDirection: "row",
-          borderStyle: "solid",
-          borderWidth: "2px",
-          borderColor: "#ABB2B9",
         }}
       >
         <Grid container style={{ marginLeft: "120px" }}>

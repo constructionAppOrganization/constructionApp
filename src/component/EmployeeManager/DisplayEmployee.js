@@ -111,7 +111,7 @@ function DisplayEmployee(props) {
     >
       <PageHeader
         title="Employee Details"
-        //subTitle="Form design with validation"
+        subTitle="View employee details"
         icon={<PersonIcon fontSize="large" />}
       />
       <div

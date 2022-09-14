@@ -45,7 +45,7 @@ export default function EmpHome() {
     <div style={{ backgroundColor: mainStyle, minHeight: "650px" }}>
       <PageHeader
         title="Report Dashboard"
-        //subTitle="Form design with validation"
+        subTitle="Navigate reports"
         icon={<SpeakerNotesIcon fontSize="large" />}
       />
 

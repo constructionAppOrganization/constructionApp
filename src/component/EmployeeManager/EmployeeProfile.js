@@ -52,7 +52,7 @@ function EmployeeProfile(props) {
     <>
       <PageHeader
         title="Employee Profile"
-        subTitle={employeeName}
+        subTitle={employeeName + ""}
         icon={<PermIdentity fontSize="large" />}
       />
 

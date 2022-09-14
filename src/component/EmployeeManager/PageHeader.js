@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2, 10, 2, 0),
     display: "flex",
     marginBottom: theme.spacing(3),
-    borderRadius: theme.spacing(0.7, 0.5, 0, 0),
+    borderRadius: theme.spacing(0, 0, 0, 0),
     borderColor: "black",
     color: "#D4E6F1",
     backgroundColor: "#34495E",
@@ -43,8 +43,7 @@ export default function PageHeader(props) {
           <Typography variant="h4" component="div">
             {title}
           </Typography>
-          <Typography variant="h5" component="div" color="textPrimary">
-            <br />
+          <Typography variant="h6" component="div" color="">
             {subTitle}
           </Typography>
         </div>

@@ -92,7 +92,7 @@ function AddEmployee() {
     <>
       <PageHeader
         title="Add New Employees"
-        //subTitle="Form design with validation"
+        subTitle="Create employee record"
         icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
       />
       <div

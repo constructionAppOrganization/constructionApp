@@ -51,7 +51,11 @@ function BarChart(props) {
 
   return (
     <>
-      <PageHeader title="Report" icon={<PersonIcon fontSize="large" />} />
+      <PageHeader
+        title="Report"
+        subTitle="Designation based report"
+        icon={<PersonIcon fontSize="large" />}
+      />
 
       <div
         style={{
