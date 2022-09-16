@@ -23,13 +23,13 @@ function BarChart(props) {
       let nonContractedCountArr = [];
       let allContractCountArr = [];
 
-      await db.collection("Designation").onSnapshot(async (snapshot) => {
-        await snapshot.docs.forEach((element) => {
+      db.collection("Designation").onSnapshot(async (snapshot) => {
+        snapshot.docs.forEach((element) => {
           designationArray.push(element.data().designation); //push in aaray
         });
         db.collection("employees").onSnapshot(async (snapshot2) => {
           //getting employee
-          await snapshot2.docs.forEach((element) => {
+          snapshot2.docs.forEach((element) => {
             employeeArray.push(element.data());
           });
 
