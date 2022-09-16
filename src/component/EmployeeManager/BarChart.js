@@ -9,6 +9,7 @@ function BarChart(props) {
   const [designation, setDesignation] = useState([]);
   const [contract, setContact] = useState([]);
   const [nonContract, setNonContract] = useState([]);
+  const [anyContract, setAnyContract] = useState([]);
 
   //Database Connections
   const db = firebase.firestore(firebase);
@@ -20,6 +21,7 @@ function BarChart(props) {
 
       let contractedCountArr = [];
       let nonContractedCountArr = [];
+      let allContractCountArr = [];
 
       await db.collection("Designation").onSnapshot(async (snapshot) => {
         await snapshot.docs.forEach((element) => {
@@ -51,8 +53,14 @@ function BarChart(props) {
             contractedCountArr.push(contractedCount);
             nonContractedCountArr.push(nonContractedCount);
           });
+
+          allContractCountArr = contractedCountArr.map(
+            (a, i) => a + nonContractedCountArr[i]
+          );
+
           setContact(contractedCountArr);
           setNonContract(nonContractedCountArr);
+          setAnyContract(allContractCountArr);
         });
       });
     }
@@ -91,6 +99,13 @@ function BarChart(props) {
                 data: nonContract,
                 backgroundColor: "rgba(100, 162, 235, 0.4)",
                 borderColor: "rgba(100, 162, 235, 1)",
+                borderWidth: 1,
+              },
+              {
+                label: "All employees",
+                data: anyContract,
+                backgroundColor: "rgba(247, 233, 70, 0.4)",
+                borderColor: "rgba(247, 233, 70, 1)",
                 borderWidth: 1,
               },
             ],

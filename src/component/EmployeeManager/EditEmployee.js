@@ -103,7 +103,16 @@ function EditEmployee(props) {
         subTitle="Edit employee details"
         icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
       />
-      <div>
+      <div
+        style={{
+          marginBottom: "10px",
+          paddingTop: "40px",
+          paddingBottom: "0px",
+          borderStyle: "solid",
+          borderWidth: "2px",
+          borderColor: "#ABB2B9",
+        }}
+      >
         <Container fluid="sm" style={{ paddingBottom: "50px" }}>
           <Row>
             <Col md={{ span: 5, offset: 3 }}>

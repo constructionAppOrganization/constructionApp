@@ -5,9 +5,8 @@ import PersonIcon from "@material-ui/icons/Person";
 import firebase from "firebase";
 
 function BarChart(props) {
-  //variable declaration
   const [designation, setDesignation] = useState([]);
-  const [designationCountArr, setDesignationCountArr] = useState([]);
+  const [salariesArr, setSalaryArr] = useState([]);
 
   //Database Connections
   const db = firebase.firestore(firebase);
@@ -18,6 +17,7 @@ function BarChart(props) {
       const employeeArray = [];
 
       let countArr = [];
+      let salaryArr = [];
 
       await db.collection("Designation").onSnapshot(async (snapshot) => {
         await snapshot.docs.forEach((element) => {
@@ -32,17 +32,17 @@ function BarChart(props) {
           setDesignation(designationArray);
 
           designationArray.forEach((des) => {
-            let count = 0;
+            let salary = 0;
 
             employeeArray.forEach((emp) => {
               if (emp.designation == des) {
-                count++;
+                salary += parseInt(emp.etf);
               }
             });
-            countArr.push(count);
+            salaryArr.push(salary);
           });
-          setDesignationCountArr(countArr);
-          console.log("designation count", designationCountArr);
+
+          setSalaryArr(salaryArr);
         });
       });
     }
@@ -73,7 +73,7 @@ function BarChart(props) {
             datasets: [
               {
                 label: "Contract Employees",
-                data: designationCountArr,
+                data: salariesArr,
                 backgroundColor: [
                   "rgba(231, 76, 60, 0.8)",
                   "rgba(46, 204, 113, 0.8)",
