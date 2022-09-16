@@ -83,12 +83,19 @@ function BarChart(props) {
                 ],
 
                 borderColor: "rgba(247, 249, 249, 1)",
-                borderWidth: 3,
+                borderWidth: 4,
               },
             ],
           }}
           height={100}
-          options={{}}
+          options={{
+            plugins: {
+              title: {
+                display: true,
+                text: "Custom Chart Title",
+              },
+            },
+          }}
         />
       </div>
     </>
