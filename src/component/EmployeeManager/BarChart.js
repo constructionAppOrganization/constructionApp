@@ -125,6 +125,14 @@ function BarChart(props) {
                   {
                     ticks: {
                       beginAtZero: true,
+                      fontSize: 15,
+                    },
+                  },
+                ],
+                xAxes: [
+                  {
+                    ticks: {
+                      fontSize: 15,
                     },
                   },
                 ],

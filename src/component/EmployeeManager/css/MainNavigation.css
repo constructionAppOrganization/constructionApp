@@ -19,7 +19,7 @@
 .barOtherInfoMain {
   display: grid;
   grid-template-columns: 210px 210px 210px;
-  margin: 70px 0 20px 20px;
+  margin: 50px 0 20px 20px;
 }
 
 .barOtherInfoData {
