@@ -3,6 +3,7 @@ import { Bar } from "react-chartjs-2";
 import PageHeader from "./PageHeader";
 import PersonIcon from "@material-ui/icons/Person";
 import firebase from "firebase";
+import "./css/MainNavigation.css";
 
 function BarChart(props) {
   //variable declaration
@@ -67,14 +68,18 @@ function BarChart(props) {
     getData();
   }, []);
 
+  const getSum = (arr) =>
+    arr.length > 0 ? arr.reduce((sum, num) => sum + num) : 0;
+
   return (
-    <>
+    <div className="barContainer">
       <PageHeader
         title="Report"
         subTitle="Contract based report"
         icon={<PersonIcon fontSize="large" />}
       />
       <div
+        className="barBody"
         style={{
           paddingTop: "40px",
           paddingBottom: "20px",
@@ -83,50 +88,67 @@ function BarChart(props) {
           borderColor: "#ABB2B9",
         }}
       >
-        <Bar
-          data={{
-            labels: designation,
-            datasets: [
-              {
-                label: "Contract Employees",
-                data: contract,
-                backgroundColor: "rgba(255, 99, 132, 0.4)",
-                borderColor: "rgba(255, 99, 132, 1)",
-                borderWidth: 1,
-              },
-              {
-                label: "Non-contract employees",
-                data: nonContract,
-                backgroundColor: "rgba(100, 162, 235, 0.4)",
-                borderColor: "rgba(100, 162, 235, 1)",
-                borderWidth: 1,
-              },
-              {
-                label: "All employees",
-                data: anyContract,
-                backgroundColor: "rgba(247, 233, 70, 0.4)",
-                borderColor: "rgba(247, 233, 70, 1)",
-                borderWidth: 1,
-              },
-            ],
-          }}
-          height={400}
-          width={600}
-          options={{
-            maintainAspectRatio: false,
-            scales: {
-              yAxes: [
+        <div className="barChart">
+          <Bar
+            data={{
+              labels: designation,
+              datasets: [
                 {
-                  ticks: {
-                    beginAtZero: true,
-                  },
+                  label: "Contract Employees",
+                  data: contract,
+                  backgroundColor: "rgba(255, 99, 132, 0.4)",
+                  borderColor: "rgba(255, 99, 132, 1)",
+                  borderWidth: 1,
+                },
+                {
+                  label: "Non-contract employees",
+                  data: nonContract,
+                  backgroundColor: "rgba(100, 162, 235, 0.4)",
+                  borderColor: "rgba(100, 162, 235, 1)",
+                  borderWidth: 1,
+                },
+                {
+                  label: "All employees",
+                  data: anyContract,
+                  backgroundColor: "rgba(247, 233, 70, 0.4)",
+                  borderColor: "rgba(247, 233, 70, 1)",
+                  borderWidth: 1,
                 },
               ],
-            },
-          }}
-        />
+            }}
+            height={400}
+            width={600}
+            options={{
+              maintainAspectRatio: false,
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+              },
+            }}
+          />
+        </div>
+
+        <div className="barOtherInfoMain">
+          <div className="barOtherInfoData">
+            <h5>Contract</h5>
+            <h5>{getSum(contract)}</h5>
+          </div>
+          <div className="barOtherInfoData">
+            <h5>Non-Contract</h5>
+            <h5>{getSum(nonContract)}</h5>
+          </div>
+          <div className="barOtherInfoData">
+            <h5>All-Contracts</h5>
+            <h5>{getSum(anyContract)}</h5>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
