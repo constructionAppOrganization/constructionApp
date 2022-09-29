@@ -110,8 +110,8 @@ function BarChart(props) {
                 {
                   label: "All employees",
                   data: anyContract,
-                  backgroundColor: "rgba(247, 233, 70, 0.4)",
-                  borderColor: "rgba(247, 233, 70, 1)",
+                  backgroundColor: "rgba(250, 184, 42, 0.4)",
+                  borderColor: "rgba(250, 184, 42, 1)",
                   borderWidth: 1,
                 },
               ],
@@ -151,7 +151,7 @@ function BarChart(props) {
             <h5>{getSum(nonContract)}</h5>
           </div>
           <div className="barOtherInfoData">
-            <h5>All-Contracts</h5>
+            <h5>All-Employees</h5>
             <h5>{getSum(anyContract)}</h5>
           </div>
         </div>

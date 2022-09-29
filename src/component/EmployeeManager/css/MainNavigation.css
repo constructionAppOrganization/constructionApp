@@ -1,5 +1,4 @@
 /* employee navigation file */
-
 .MainNavLinks {
   text-decoration-line: none;
 }
@@ -49,4 +48,41 @@
   color: rgb(204, 150, 2);
   border-color: rgb(253, 167, 6);
   background-color: rgb(252, 242, 226);
+}
+
+/* pie chart js file */
+
+.pieOtherInfoMain {
+  display: grid;
+  grid-template-columns: 210px 210px 210px;
+  margin: 50px 0 20px 20px;
+}
+
+.pieOtherInfoData {
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  border-style: solid;
+  width: 160px;
+  height: 80px;
+  color: azure;
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: black;
+}
+
+.pieOtherInfoMain div:nth-child(1) {
+  color: rgb(224, 33, 160);
+  border-color: rgb(226, 24, 192);
+  background-color: rgb(255, 221, 245);
+}
+
+.pieOtherInfoMain div:nth-child(2) {
+  color: rgb(140, 71, 250);
+  border-color: rgb(156, 38, 253);
+  background-color: rgb(230, 214, 248);
+}
+
+.pieOtherInfoMain div:nth-child(3) {
+  color: rgb(70, 182, 66);
+  border-color: rgb(30, 158, 41);
+  background-color: rgb(205, 255, 203);
 }

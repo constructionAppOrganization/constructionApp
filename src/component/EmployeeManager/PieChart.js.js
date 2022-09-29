@@ -8,6 +8,9 @@ function BarChart(props) {
   const [designation, setDesignation] = useState([]);
   const [salariesArr, setSalaryArr] = useState([]);
 
+  const [contract, setContact] = useState([]);
+  const [nonContract, setNonContract] = useState([]);
+
   //Database Connections
   const db = firebase.firestore(firebase);
 
@@ -16,8 +19,9 @@ function BarChart(props) {
       const designationArray = [];
       const employeeArray = [];
 
-      let countArr = [];
       let salaryArr = [];
+      let contractedCountArr = [];
+      let nonContractedCountArr = [];
 
       db.collection("Designation").onSnapshot(async (snapshot) => {
         snapshot.docs.forEach((element) => {
@@ -33,72 +37,104 @@ function BarChart(props) {
 
           designationArray.forEach((des) => {
             let salary = 0;
+            let contractedSalary = 0;
+            let nonContractedSalary = 0;
 
             employeeArray.forEach((emp) => {
               if (emp.designation == des) {
                 salary += parseInt(emp.etf);
+
+                if (emp.empType == "contracted") {
+                  contractedSalary += parseInt(emp.etf);
+                } else if (emp.empType == "non-contracted") {
+                  nonContractedSalary += parseInt(emp.etf);
+                }
               }
             });
             salaryArr.push(salary);
+            contractedCountArr.push(contractedSalary);
+            nonContractedCountArr.push(nonContractedSalary);
           });
 
           setSalaryArr(salaryArr);
+          setContact(contractedCountArr);
+          setNonContract(nonContractedCountArr);
         });
       });
     }
     getData();
   }, []);
 
+  const getSum = (arr) =>
+    arr.length > 0 ? arr.reduce((sum, num) => sum + num) : 0;
+
   return (
-    <>
+    <div className="pieContainer">
       <PageHeader
         title="Report"
-        subTitle="Designation based report"
+        subTitle="ETF report"
         icon={<PersonIcon fontSize="large" />}
       />
 
       <div
+        className="pieBody"
         style={{
           paddingTop: "40px",
-          paddingBottom: "10px",
-          marginBottom: "10px",
+          paddingBottom: "20px",
           borderStyle: "solid",
           borderWidth: "2px",
           borderColor: "#ABB2B9",
         }}
       >
-        <Doughnut
-          data={{
-            labels: designation,
-            datasets: [
-              {
-                label: "Contract Employees",
-                data: salariesArr,
-                backgroundColor: [
-                  "rgba(231, 76, 60, 0.8)",
-                  "rgba(46, 204, 113, 0.8)",
-                  "rgba(142, 68, 173, 0.8)",
-                  "rgba(41, 128, 185, 0.8)",
-                  "rgba(241, 196, 15 , 0.8)",
-                ],
+        <div className="pieChart">
+          <Doughnut
+            data={{
+              labels: designation,
+              datasets: [
+                {
+                  label: "Contract Employees",
+                  data: salariesArr,
+                  backgroundColor: [
+                    "rgba(231, 76, 60, 0.8)",
+                    "rgba(46, 204, 113, 0.8)",
+                    "rgba(142, 68, 173, 0.8)",
+                    "rgba(41, 128, 185, 0.8)",
+                    "rgba(241, 196, 15 , 0.8)",
+                  ],
 
-                borderColor: "rgba(247, 249, 249, 1)",
-                borderWidth: 4,
+                  borderColor: "rgba(247, 249, 249, 1)",
+                  borderWidth: 4,
+                },
+              ],
+            }}
+            height={100}
+            options={{
+              plugins: {
+                title: {
+                  display: true,
+                  text: "",
+                },
               },
-            ],
-          }}
-          height={100}
-          options={{
-            plugins: {
-              title: {
-                display: true,
-                text: "Custom Chart Title",
-              },
-            },
-          }}
-        />
+            }}
+          />
+        </div>
+
+        <div className="pieOtherInfoMain">
+          <div className="pieOtherInfoData">
+            <h5>Total Payout</h5>
+            <h5>{getSum(salariesArr)}</h5>
+          </div>
+          <div className="pieOtherInfoData">
+            <h5>Contract</h5>
+            <h5>{getSum(contract)}</h5>
+          </div>
+          <div className="pieOtherInfoData">
+            <h5>Non-Contract</h5>
+            <h5>{getSum(nonContract)}</h5>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 }
 
