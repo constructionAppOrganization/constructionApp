@@ -65,17 +65,17 @@ function AddPayment() {
   }
 
   return (
-    <div className="container">
+    <div className="container" style={{backgroundColor: '#fed8b1', padding: "20px"}}>
       <br />
       <Link to="/adminPannel/ClientManager">
         <Button variant="primary">Back</Button>
       </Link>
       <br />
       <center>
-        <h2 style={{ color: "#f0ad4e" }}>Add New Payment</h2>
+      <u style={{color: "#f0ad4e"}}><h2 style={{ color: "#f0ad4e" }}>Add New Payment</h2></u>
       </center>
       <br />
-      <Form onSubmit={sendData}>
+      <Form onSubmit={sendData} style={{backgroundColor: "#ececec", padding: "20px"}}>
         <center>
           <Form.Control
             style={{ width: "400px" }}
