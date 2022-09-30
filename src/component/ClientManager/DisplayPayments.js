@@ -3,6 +3,7 @@ import firebase from "../../firebase";
 import { Link } from "react-router-dom";
 import { Form, Table, Button, ButtonGroup } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import TablePagination from "@material-ui/core/TablePagination";
 
 function DisplayPayments(props) {
   const [payments, setPayments] = useState([]);
@@ -12,6 +13,18 @@ function DisplayPayments(props) {
   const db = firebase.firestore();
   const [editingPayment, setEditingPayment] = useState(props);
   const [clientSearch, setClientSearch] = useState("");
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    console.log(event.target.value);
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   useEffect(() => {
     db.collection("payments").onSnapshot((snapshot) => {
@@ -56,14 +69,14 @@ function DisplayPayments(props) {
   }
 
   return (
-    <div style={{ paddingRight: "20px", paddingLeft: "20px" }}>
+    <div style={{ paddingRight: "20px", paddingLeft: "20px", paddingTop: "20px", paddingBottom: "20px", backgroundColor: '#fed8b1' }}>
       <center>
         <br />
-        <h3 style={{ color: "#f0ad4e" }}>
+        <h2 style={{color: "#f0ad4e"}}>
           <b>
-            <u>Payment Report</u>
+            <u style={{color: "#f0ad4e"}}>Payment Report</u>
           </b>
-        </h3>
+        </h2>
         <br />
         <Form.Control
           style={{ width: "250px" }}
@@ -72,7 +85,7 @@ function DisplayPayments(props) {
             setClientSearch(event.target.value);
           }}
         >
-          <option value="">Client?</option>
+          <option value="">Select Client</option>
           {clientNames.map((clientName) => (
             <option value={clientName}>{clientName}</option>
           ))}
@@ -86,7 +99,7 @@ function DisplayPayments(props) {
             setProjectSearch(event.target.value);
           }}
         >
-          <option value="">Project?</option>
+          <option value="">Select Project</option>
           {projectNames.map((projectName) => (
             <option value={projectName}>{projectName}</option>
           ))}
@@ -99,7 +112,7 @@ function DisplayPayments(props) {
         </Button>
       </Link>
 
-      <Table bordered size="sm">
+      <Table bordered size="sm" style={{backgroundColor: "white"}}>
         <thead>
           <tr>
             <th style={{ display: "none" }}>Document ID</th>
@@ -111,7 +124,7 @@ function DisplayPayments(props) {
           </tr>
         </thead>
         <tbody>
-          {payments
+          {payments.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .filter((payment) => {
               if (clientSearch == "") {
                 return payment;
@@ -172,6 +185,15 @@ function DisplayPayments(props) {
             ))}
         </tbody>
       </Table>
+      <TablePagination
+          rowsPerPageOptions={[10, 20, 30, 40]}
+          component="div"
+          count={payments.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
     </div>
   );
 }
