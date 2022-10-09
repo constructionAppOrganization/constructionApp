@@ -44,32 +44,57 @@ router.route("/").get((req, res) => {
     });
 });
 
-router.route("/get/:username").get((req, res) => {
-  const username = req.params.username;
+// router.route("/get/:username").get((req, res) => {
+//   const username = req.params.username;
 
-  User.findOne({ username })
-    .then((data) => {
-      res.json(data);
-      console.log(data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-});
+//   User.findOne({ username })
+//     .then((data) => {
+//       res.json(data);
+//       console.log(data);
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 
-router.route("/update/:username").put(async (req, res) => {
-  const updates = req.body;
+// router.route("/update/:username").put(async (req, res) => {
+//   const updates = req.body;
 
-  let username = req.params.username;
+//   let username = req.params.username;
 
-  console.log(updates);
+//   console.log(updates);
 
-  await User.findOneAndUpdate({ username }, updates)
+//   await User.findOneAndUpdate({ username }, updates)
+//     .then(() => {
+//       res.json("Updated succesfully!");
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
+
+router.route("/update/:id").put(async (req, res) => {
+  let userId = req.params.id;
+  const {username,email,contactNo,nic,firstName,lastName,gender } =
+    req.body;
+
+  const updateUser = {
+    username,
+    email,
+    contactNo,
+    nic,
+    firstName,
+    lastName,
+    gender
+  };
+
+  const update = await User.findByIdAndUpdate(userId, updateUser)
     .then(() => {
-      res.json("Updated succesfully!");
+      res.status(200).send({ status: "User Updated" });
     })
     .catch((err) => {
       console.log(err);
+      res.status(500).send({ status: "Error with updating data" });
     });
 });
 
@@ -111,6 +136,12 @@ router.route("/check/:username").get(async (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+});
+
+router.route('/get/:id').get((req, res) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
