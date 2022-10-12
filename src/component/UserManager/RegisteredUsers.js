@@ -62,7 +62,7 @@ function RegisteredUsers() {
     if (
       window.confirm(
         "User " +
-        //   user.driverid +
+       
           " (" +
           user.firstName +
           " " +
@@ -72,7 +72,7 @@ function RegisteredUsers() {
       )
     ) {
       axios
-        .delete(`http://localhost:8070/drivers/delete/${user.userid}`)
+        .delete(`http://localhost:8078/users/delete/${user.username}`)
         .then((res) => {
           console.log(res);
           toast.success("User deleted!", {
