@@ -47,11 +47,7 @@ function SubcontractManager() {
                        <EditSubcon id={editingSubconID}/>
                    </Route>
 
-                   <Route path='/adminPannel/SubcontractManager/report'  component={Report}>
-                       <Report 
-                            viewReportHandler={viewReportHandler}
-                       />
-                   </Route>
+                   
 
                    <Route path='/adminPannel/SubcontractManager/ViewReport' >
                        <ViewReport name={viewingReport}/>
