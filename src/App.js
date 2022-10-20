@@ -7,6 +7,7 @@ import Header from "./component/Header/Header";
 import Emp from "./component/Emp";
 import EmployeeManager from "./component/EmployeeManager/EmployeeManager";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./component/Home/Home";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         </Switch>
 
         <Switch>
+          <Route path="/" exact component={Home}>
+            <Home />
+          </Route>
+
           <Route path="/adminPannel" exact component={AdminPannel}>
             <AdminPannel />
           </Route>
