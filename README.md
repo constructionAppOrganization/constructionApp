@@ -1,8 +1,8 @@
-###CONSTRUCTION MANAGEMENT APP
+### CONSTRUCTION MANAGEMENT APP
 
 This app manages construction process for an organization . It manages construction projects , organization employees , client management and subcontracts .
 
-##MEMBERS
+## MEMBERS
 
 
 lkh-krishen - IT20001216
@@ -10,7 +10,7 @@ Kanishka Saranga - IT20206178
 Buddimal Liyanapathirana - IT20403188
 Vihanga Lakshan - IT20037574
 
-##USED TECHNOLOGIES
+## USED TECHNOLOGIES
 MongoDB and Firebase
 Express Js
 React Js
