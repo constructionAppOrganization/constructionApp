@@ -1,3 +1,22 @@
+###CONSTRUCTION MANAGEMENT APP
+
+This app manages construction process for an organization . It manages construction projects , organization employees , client management and subcontracts .
+
+##MEMBERS
+
+
+lkh-krishen - IT20001216
+Kanishka Saranga - IT20206178
+Buddimal Liyanapathirana - IT20403188
+Vihanga Lakshan - IT20037574
+
+##USED TECHNOLOGIES
+MongoDB and Firebase
+Express Js
+React Js
+Node Js
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
