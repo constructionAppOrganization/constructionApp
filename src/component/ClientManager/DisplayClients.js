@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Table, Button, ButtonGroup, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./clientmanager.css";
+import TablePagination from "@material-ui/core/TablePagination";
 
 function DisplayClients(props) {
   const [clients, setClients] = useState([]);
@@ -11,6 +12,18 @@ function DisplayClients(props) {
   const [editingClient, setEditingClient] = useState(props);
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    console.log(event.target.value);
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   useEffect(() => {
     db.collection("clients").onSnapshot((snapshot) => {
@@ -28,7 +41,7 @@ function DisplayClients(props) {
       .doc(ID)
       .delete()
       .then(() => {
-        alert(ID, "Document successfully deleted!");
+        alert("Client successfully deleted!");
       })
       .catch((err) => {
         console.error("Error removing document: ", err);
@@ -41,7 +54,9 @@ function DisplayClients(props) {
   }
 
   return (
-    <div style={{ paddingRight: "20px", paddingLeft: "20px" }}>
+    <div style={{ paddingRight: "20px", paddingLeft: "20px", paddingTop: "20px", paddingBottom: "20px", backgroundColor: '#fed8b1' }}>
+      <br />
+      <center><u style={{color: "#f0ad4e"}}><h2 style={{color: "#f0ad4e"}}>Client Details Report</h2></u></center>
       <br />
       <center>
         <Form.Group controlId="formBasicSearchBar">
@@ -59,7 +74,7 @@ function DisplayClients(props) {
           Add New Client
         </Button>
       </Link>
-      <Table bordered size="sm">
+      <Table bordered size="sm" style={{backgroundColor: "white"}} id="dtBasicExample">
         <thead>
           <tr>
             <th style={{ display: "none" }}>Document ID</th>
@@ -82,7 +97,7 @@ function DisplayClients(props) {
           </tr>
         </thead>
         <tbody>
-          {clients
+          {clients.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .filter((client) => {
               if (searchTerm == "") {
                 return client;
@@ -146,6 +161,15 @@ function DisplayClients(props) {
             ))}
         </tbody>
       </Table>
+      <TablePagination
+          rowsPerPageOptions={[10, 20, 30, 40]}
+          component="div"
+          count={clients.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
     </div>
   );
 }
