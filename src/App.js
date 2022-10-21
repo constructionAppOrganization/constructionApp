@@ -8,6 +8,7 @@ import Emp from "./component/Emp";
 import EmployeeManager from "./component/EmployeeManager/EmployeeManager";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./component/Home/Home";
+import ClientManager from "./component/ClientManager/ClientManager";
 
 function App() {
   return (

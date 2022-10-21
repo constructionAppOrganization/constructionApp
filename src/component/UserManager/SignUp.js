@@ -88,17 +88,16 @@ export default function SignUp() {
                   setUsername(e.target.value);
                 }}
               />
-              <span>
-                <p style={{ color: "red" }}>{usernameError}</p>
-              </span>
+              {/* <span><p style = {{color : "red"}}>{usernameError}</p></span> */}
               <br />
               <Label for="email">
                 <b>Email</b>
               </Label>
               <Input
                 placeholder="Enter Email"
-                type="email"
-                title="Enter a valid email"
+                type="text"
+                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+                title="Enter valid Email. eg: example@gmail.com"
                 required
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -198,11 +197,7 @@ export default function SignUp() {
                   Submit
                 </Button>{" "}
                 {}
-                <Button
-                  href="/adminPannel/UserManager/Login"
-                  type="submit"
-                  className="btn btn-primary"
-                >
+                <Button href="/login" type="submit" className="btn btn-primary">
                   Log IN
                 </Button>
               </center>

@@ -29,7 +29,7 @@ import "react-toastify/dist/ReactToastify.css";
 toast.configure();
 const ref = React.createRef();
 
-function RegisteredUsers() {
+function UserReport() {
  
 
   const [users, setusers] = useState([]);
@@ -62,41 +62,9 @@ function RegisteredUsers() {
 
   };
 
-  const deleteUser = (user) => {
-    if (
-      window.confirm(
-        "User " +
-       
-          " (" +
-          user.firstName +
-          " " +
-          user.lastName +
-          ") " +
-          "will be removed from the database"
-      )
-    ) {
-      axios
-        .delete(`http://localhost:8078/users/delete/${user.username}`)
-        .then((res) => {
-          console.log(res);
-          toast.success("User deleted!", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-            autoClose: 5000,
-            hideProgressBar: false,
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-          toast.error("Something went wrong :(", {
-            position: toast.POSITION.BOTTOM_RIGHT,
-            autoClose: 10000,
-            hideProgressBar: false,
-          });
-        });
-      let filteredUsers = users.filter((uid) => uid !== user);
-      setusers(filteredUsers);
-    }
-  };
+  
+
+  
 
   useEffect(() => {
     axios
@@ -131,7 +99,7 @@ function RegisteredUsers() {
      
       <Container>
       <div className={driverStyles.viewdriverDiv}  ref={ref} >
-        <center><h3 className={driverStyles.header}>Managers' Details</h3></center>
+        <center><h3 className={driverStyles.header}>User Report</h3></center>
         <br />
         <br />
         <Row>
@@ -185,14 +153,15 @@ function RegisteredUsers() {
         </Row>
         <table width="100%" border="2px" className={driverStyles.tbldata}>
           <tr>
-            <th className={driverStyles.tbldata}>User Name</th>
+          <th className={driverStyles.tbldata}>First Name</th>
+          <th className={driverStyles.tbldata}>Last Name</th>
             <th className={driverStyles.tbldata}>Email</th>
             <th className={driverStyles.tbldata}>Contact Number</th>
             <th className={driverStyles.tbldata}>Nic</th>
-            <th className={driverStyles.tbldata}>First Name</th>
-            <th className={driverStyles.tbldata}>Last Name</th>
-            <th className={driverStyles.tbldata}>Gender</th>
-            <th className={driverStyles.tbldata2}>Actions</th>
+            
+            
+            
+           
           </tr>
           {users
             .filter((user) => {
@@ -223,33 +192,16 @@ function RegisteredUsers() {
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((user) => (
               <tr className={driverStyles.tbldata}>
-                <td className={driverStyles.tbldata}>{user.username}</td>
+                <td className={driverStyles.tbldata}>{user.firstName}</td>
+                <td className={driverStyles.tbldata}>{user.lastName}</td>
+              
                 <td className={driverStyles.tbldata}>{user.email}</td>
                 <td className={driverStyles.tbldata}>{user.contactNo}</td>
                 <td className={driverStyles.tbldata}>{user.nic}</td>
-                <td className={driverStyles.tbldata}>{user.firstName}</td>
-                <td className={driverStyles.tbldata}>{user.lastName}</td>
-                <td className={driverStyles.tbldata}>{user.gender}</td>
-                <td className={driverStyles.tbldata}>
-                  <button
-                    className={driverStyles.btnEdit}
-                    onClick={() => {
-                      //     handleEdit(driver);
-                      history.push(`/edit-user/${user._id}`);
-                    }}
-                  >
-                    Edit
-                  </button>
-
-                  <button
-                    className={driverStyles.btnDelete}
-                    onClick={() => {
-                      deleteUser(user);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </td>
+                
+               
+                
+               
               </tr>
             ))}
         </table>
@@ -268,23 +220,7 @@ function RegisteredUsers() {
             </Row>
             </div>
           </Container>
-        <TablePagination
-
-          rowsPerPageOptions={[1, 2, 4, 10]}
-
-          component="div"
-
-          count={users.length}
-
-          rowsPerPage={rowsPerPage}
-
-          page={page}
-
-          onPageChange={handleChangePage}
-
-          onRowsPerPageChange={handleChangeRowsPerPage}
-
-        />
+        
         
 
       </div>
@@ -295,4 +231,4 @@ function RegisteredUsers() {
   );
 }
 
-export default RegisteredUsers;
+export default UserReport;
