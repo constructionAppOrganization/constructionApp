@@ -77,32 +77,7 @@ export default function SignUp() {
             </h2>
             <br />
 
-            <Form style={{ width: "80%" }} onSubmit={sendData}>
-              <Label for="username">
-                <b>User Name</b>
-              </Label>
-              <Input
-                placeholder="Enter User Name"
-                type="text"
-                onChange={(e) => {
-                  setUsername(e.target.value);
-                }}
-              />
-              {/* <span><p style = {{color : "red"}}>{usernameError}</p></span> */}
-              <br />
-              <Label for="email">
-                <b>Email</b>
-              </Label>
-              <Input
-                placeholder="Enter Email"
-                type="text"
-                pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-                title="Enter valid Email. eg: example@gmail.com"
-                required
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
-              />
+           
 
               <br />
               <Label for="contactNo">
@@ -132,7 +107,7 @@ export default function SignUp() {
                 }}
               />
 
-              <br />
+     <br/>
 
               <Label for="firstName">
                 <b>First Name</b>
@@ -146,17 +121,7 @@ export default function SignUp() {
               />
               <br />
 
-              <Label for="lastName">
-                <b>Last Name</b>
-              </Label>
-              <Input
-                placeholder="Enter Last Name"
-                type="text"
-                onChange={(e) => {
-                  setLastName(e.target.value);
-                }}
-              />
-              <br />
+     <br/>
 
               <Label for="gender">
                 <b>Gender</b>
@@ -173,16 +138,6 @@ export default function SignUp() {
               </Input>
               <br />
 
-              <Label for="password">
-                <b>Password</b>
-              </Label>
-              <Input
-                placeholder="Enter password"
-                type="text"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
-              />
 
               <br />
               <h9>
