@@ -3,7 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
+}
 .AdminPannelNavLinks {
   text-decoration-line: none;
 }
