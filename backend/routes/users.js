@@ -34,7 +34,7 @@ router.route("/add").post((req, res) => {
     });
 });
 
-router.route("/").get((req, res) => {
+router.route("/get").get((req, res) => {
   User.find()
     .then((data) => {
       res.json(data);
@@ -44,18 +44,18 @@ router.route("/").get((req, res) => {
     });
 });
 
-// router.route("/get/:username").get((req, res) => {
-//   const username = req.params.username;
+router.route("/get/:username").get((req, res) => {
+  const username = req.params.username;
 
-//   User.findOne({ username })
-//     .then((data) => {
-//       res.json(data);
-//       console.log(data);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
+  User.findOne({ username })
+    .then((data) => {
+      res.json(data);
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 // router.route("/update/:username").put(async (req, res) => {
 //   const updates = req.body;
@@ -138,7 +138,7 @@ router.route("/check/:username").get(async (req, res) => {
     });
 });
 
-router.route('/get/:id').get((req, res) => {
+router.route('/:id').get((req, res) => {
   User.findById(req.params.id)
     .then(user => res.json(user))
     .catch(err => res.status(400).json('Error: ' + err));

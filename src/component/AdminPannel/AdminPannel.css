@@ -1,3 +1,9 @@
+
+.AdminPannel__mainButton {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
 .AdminPannelNavLinks {
   text-decoration-line: none;
 }
@@ -47,4 +53,5 @@
   margin-left: auto;
   margin-right: auto;
   display: block;
+
 }
