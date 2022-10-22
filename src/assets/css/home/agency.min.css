@@ -92,8 +92,32 @@ img::-moz-selection {
 .btn-primary:active,
 .btn-primary:focus,
 .btn-primary:hover {
-  background-color: #7ec1f8 !important;
+  background-color: #77c0fc !important;
   border-color: #7ec1f8 !important;
+  color: #fff;
+}
+
+.btn-info:active,
+.btn-info:focus,
+.btn-info:hover {
+  background-color: #77c0fc !important;
+  border-color: #7ec1f8 !important;
+  color: #fff;
+}
+
+.btn-outlined:active,
+.btn-outlined:focus,
+.btn-outlined:hover {
+  background-color: #fd9696 !important;
+  border-color: #f02b2b !important;
+  color: #fff;
+}
+
+.btn-warning:active,
+.btn-warning:focus,
+.btn-warning:hover {
+  background-color: #ffd86c !important;
+  border-color: #fdc50d !important;
   color: #fff;
 }
 
@@ -118,8 +142,8 @@ img::-moz-selection {
 /* main panel buttons and navigation*/
 
 .btn-primary:focus {
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
-  box-shadow: 0 0 0 0.2rem rgba(254, 209, 55, 0.5) !important;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 67, 143, 0.5) !important;
+  box-shadow: 0 0 0 0.2rem rgba(83, 182, 248, 0.5) !important;
 }
 #mainNav {
   background-color: #212529;

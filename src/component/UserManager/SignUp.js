@@ -3,57 +3,36 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
-
-
-
-import {
-  Label,
-  Input,
-  Form,
-  Row,
-  Col,
- 
- 
-  Button,
- 
-} from "reactstrap";
-
-
+import { Label, Input, Form, Row, Col, Button } from "reactstrap";
 
 import { toast } from "react-toastify";
 import styles from "../../assets/css/home/Style-signin.module.css";
 
 toast.configure();
 
+export default function SignUp() {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [contactNo, setContactNo] = useState("");
 
-export default function SignUp(){
-    const [username, setUsername]= useState("");
-    const [email, setEmail]= useState("");
-    const [contactNo, setContactNo]= useState("");
-     
-    const [nic, setNic]= useState("");
-    
-    const [firstName, setFirstName]= useState("");
-    const [lastName, setLastName]= useState("");
-    
-  const [gender, setGender]= useState("");
-  const [password, setPassword]= useState("");
+  const [nic, setNic] = useState("");
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
- 
-  const [usernameError , setError] = useState("");
+  const [gender, setGender] = useState("");
+  const [password, setPassword] = useState("");
 
-  const genderList = [
-    "Male",
-    "Female",
-  ];
+  const [usernameError, setError] = useState("");
 
-  function sendData(e){
+  const genderList = ["Male", "Female"];
+
+  function sendData(e) {
     e.preventDefault();
     //Checking whether username already exists
 
-    axios.get(`http://localhost:8078/users/check/${username}`).then((res) =>{
-      if (res.data === true){
+    axios.get(`http://localhost:8078/users/check/${username}`).then((res) => {
+      if (res.data === true) {
         setError("Please use a different username!");
         toast.error("Username already exists!", {
           position: toast.POSITION.BOTTOM_RIGHT,
@@ -61,38 +40,31 @@ export default function SignUp(){
           hideProgressBar: false,
         });
         setUsername("");
+      } else {
+        const user = {
+          username,
+          email,
+          contactNo,
+          nic,
+          firstName,
+          lastName,
+          gender,
+          password,
+        };
+        axios
+          .post("http://localhost:8078/users/add", user)
+          .then(() => {
+            alert("SignUp Details Added");
+            window.location.reload();
+          })
+          .catch((err) => {
+            alert(err);
+          });
       }
-      else{
-
-        const user={
-      
-        username,  
-        email,
-        contactNo,
-        nic,    
-        firstName,
-        lastName,
-        gender,
-        password
-
-          
-          }
-          axios.post("http://localhost:8078/users/add", user).then(()=>{
-                  alert("SignUp Details Added");
-                  window.location.reload();
-            
-                }).catch((err)=>{
-                  alert(err)
-                })
-
-      }
-    })
-
+    });
   }
-  
-  
-  return(
-    
+
+  return (
     <div style={{ width: "100vw" }}>
       <Row>
         <Col xl="8">
@@ -100,8 +72,11 @@ export default function SignUp(){
         </Col>
         <Col>
           <div className={styles.loginForm}>
-            <h2><b>SIGN UP</b></h2>
+            <h2>
+              <b>SIGN UP</b>
+            </h2>
             <br />
+
            
 
     <Form style={{ width: "80%" }} onSubmit={sendData}>
@@ -200,13 +175,9 @@ export default function SignUp(){
 
     </Form>
     </div>
+
         </Col>
       </Row>
     </div>
-
-    
-    
-  )
-
-
+  );
 }
