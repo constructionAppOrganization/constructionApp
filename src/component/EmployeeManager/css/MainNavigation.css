@@ -1,0 +1,88 @@
+/* employee navigation file */
+.MainNavLinks {
+  text-decoration-line: none;
+}
+
+.MainNavBtn {
+  width: 100%;
+}
+
+.EmpMainBody {
+  height: 100%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #abb2b9;
+}
+
+/* bar chart js file */
+.barOtherInfoMain {
+  display: grid;
+  grid-template-columns: 210px 210px 210px;
+  margin: 50px 0 20px 20px;
+}
+
+.barOtherInfoData {
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  border-style: solid;
+  width: 160px;
+  height: 80px;
+  color: azure;
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: black;
+}
+
+.barOtherInfoMain div:nth-child(1) {
+  color: rgb(255, 81, 0);
+  border-color: rgb(255, 94, 0);
+  background-color: rgb(250, 229, 226);
+}
+
+.barOtherInfoMain div:nth-child(2) {
+  color: rgb(0, 102, 255);
+  border-color: rgb(0, 102, 255);
+  background-color: rgb(234, 239, 255);
+}
+
+.barOtherInfoMain div:nth-child(3) {
+  color: rgb(204, 150, 2);
+  border-color: rgb(253, 167, 6);
+  background-color: rgb(252, 242, 226);
+}
+
+/* pie chart js file */
+
+.pieOtherInfoMain {
+  display: grid;
+  grid-template-columns: 210px 210px 210px;
+  margin: 50px 0 20px 20px;
+}
+
+.pieOtherInfoData {
+  padding: 10px 10px 10px 10px;
+  border-radius: 5px;
+  border-style: solid;
+  width: 160px;
+  height: 80px;
+  color: azure;
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: black;
+}
+
+.pieOtherInfoMain div:nth-child(1) {
+  color: rgb(224, 33, 160);
+  border-color: rgb(226, 24, 192);
+  background-color: rgb(255, 221, 245);
+}
+
+.pieOtherInfoMain div:nth-child(2) {
+  color: rgb(140, 71, 250);
+  border-color: rgb(156, 38, 253);
+  background-color: rgb(230, 214, 248);
+}
+
+.pieOtherInfoMain div:nth-child(3) {
+  color: rgb(70, 182, 66);
+  border-color: rgb(30, 158, 41);
+  background-color: rgb(205, 255, 203);
+}
