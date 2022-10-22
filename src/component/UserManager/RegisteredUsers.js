@@ -1,5 +1,5 @@
 import React from "react";
-import Pdf from "react-to-pdf";
+
 import driverStyles from "../../assets/css/home/DriverDetails.module.css";
 import TablePagination from "@material-ui/core/TablePagination";
 
@@ -100,7 +100,7 @@ function RegisteredUsers() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8078/users")
+      .get("http://localhost:8078/users/get")
       .then((res) => {
         setusers(res.data);
       })
@@ -115,16 +115,8 @@ function RegisteredUsers() {
   }, []);
 
   let history = useHistory();
-  const downloadPDF = () => {
-    
-     
-     
-   };
-   const options = {
-    orientation: 'landscape',
-    unit: 'in',
-    format: [17,10]
-};
+ 
+
   
   return (
     <>
@@ -235,7 +227,7 @@ function RegisteredUsers() {
                     className={driverStyles.btnEdit}
                     onClick={() => {
                       //     handleEdit(driver);
-                      history.push(`/edit-user/${user._id}`);
+                      history.push(`/adminPannel/editUser/${user._id}`);
                     }}
                   >
                     Edit
@@ -253,21 +245,17 @@ function RegisteredUsers() {
               </tr>
             ))}
         </table>
-        <Container>
-          <div className="reportdownload">
-            <Row>
-              <Col>
-              <div>
-                <Pdf targetRef={ref} filename="complaint-report.pdf" options={options} >
-                {({ toPdf }) => 
-                <button className="btn btn-primary" style={{float:"right",width : "28%", backgroundColor: "#ff762e"}} onClick={toPdf}
-            > Capture as Pdf</button>}
-                </Pdf>
-                </div>
-              </Col>
-            </Row>
-            </div>
-          </Container>
+
+        <button
+                    className={driverStyles.btnEdit}
+                    onClick={() => {
+                      //     handleEdit(driver);
+                      history.push(`/adminPannel/userReport`);
+                    }}
+                  >
+                 SEE REPORT
+                  </button>
+        
         <TablePagination
 
           rowsPerPageOptions={[1, 2, 4, 10]}

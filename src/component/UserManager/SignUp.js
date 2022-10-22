@@ -108,6 +108,7 @@ export default function SignUp(){
 
      <Label for="username"><b>User Name</b></Label>
      <Input placeholder="Enter User Name" type="text"
+      pattern = "[A-Za-z0-9]+" title = "Please Enter Only Letters and Numbers"
      onChange={(e)=>{
       setUsername(e.target.value);
      }} />
@@ -115,9 +116,7 @@ export default function SignUp(){
       <br/>
      <Label for="email"><b>Email</b></Label>
      <Input placeholder="Enter Email" type="text"
-     pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
-     title = "Enter valid Email. eg: example@gmail.com"  required
-
+     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title = "Enter a valid email"
      onChange={(e)=>{
       setEmail(e.target.value);
      }} />
@@ -126,8 +125,7 @@ export default function SignUp(){
      <Label for="contactNo"><b>Contact Number</b></Label>
      <Input placeholder="Enter Contact Number" type="text"
      
-     pattern = "[0-9]{10}"
-     title = "Enter a 10 digit phone number starting with 0"  required
+     pattern = "[0-9]{10}" title = "Enter a 10 digit phone number starting with 0"
      onChange={(e)=>{
       setContactNo(e.target.value);
      }} />
@@ -136,6 +134,7 @@ export default function SignUp(){
 
      <Label for="nic"><b>NIC</b></Label>
      <Input placeholder="Enter NIC Number" type="text"
+     pattern="[0-9]{9}[V]{1}" title = "Enter a valid NIC Number, EX : 785678640V" 
      onChange={(e)=>{
       setNic(e.target.value);
      }} />
@@ -144,6 +143,7 @@ export default function SignUp(){
 
      <Label for="firstName"><b>First Name</b></Label>
      <Input placeholder="Enter First Name" type="text"
+      pattern="[A-Za-z]+" title = "Please Enter Only Capital or Simple Letters, EX : Kanishka" 
      onChange={(e)=>{
       setFirstName(e.target.value);
      }} />
@@ -152,6 +152,7 @@ export default function SignUp(){
 
       <Label for="lastName"><b>Last Name</b></Label>
      <Input placeholder="Enter Last Name" type="text"
+      pattern="[A-Za-z]+" title = "Please Enter Only Capital or Simple Letters, EX : Kanishka" 
      onChange={(e)=>{
       setLastName(e.target.value);
      }} />
@@ -168,12 +169,14 @@ export default function SignUp(){
          <option>{c}</option>
        ))}
        
+       
     </Input> 
      <br/>
 
      <Label for="password"><b>Password</b></Label>
      <Input placeholder="Enter password" type="text"
-     
+       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
+       title = "Enter Password with at least one number and one uppercase and lowercase letter, and at least 6 or more characters, EX : Pass1234" 
      onChange={(e)=>{
       setPassword(e.target.value);
      }} />
@@ -188,7 +191,7 @@ export default function SignUp(){
      <center>
        <Button type="submit" className="btn btn-primary">Submit</Button> { }
        
-       <Button href="/login" type="submit" className="btn btn-primary">Log IN</Button>
+       <Button href="/" type="submit" className="btn btn-primary">Log IN</Button>
      </center>
 
 

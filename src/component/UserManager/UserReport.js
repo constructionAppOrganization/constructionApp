@@ -68,7 +68,7 @@ function UserReport() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8078/users")
+      .get("http://localhost:8078/users/get")
       .then((res) => {
         setusers(res.data);
       })
@@ -98,7 +98,7 @@ function UserReport() {
     <>
      
       <Container>
-      <div className={driverStyles.viewdriverDiv}  ref={ref} >
+      <div className={driverStyles.viewdriverDiv}  >
         <center><h3 className={driverStyles.header}>User Report</h3></center>
         <br />
         <br />
@@ -151,7 +151,7 @@ function UserReport() {
           </Col>
           <Col></Col>
         </Row>
-        <table width="100%" border="2px" className={driverStyles.tbldata}>
+        <table width="100%" border="2px" className={driverStyles.tbldata}  ref={ref}>
           <tr>
           <th className={driverStyles.tbldata}>First Name</th>
           <th className={driverStyles.tbldata}>Last Name</th>
